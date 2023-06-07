@@ -12,22 +12,32 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="d-flex">
       <div class="form-group">
         <label for="cpf" class="font-bold">CPF</label>
-        <input formControlName="cpf" mask="000.000.000-00" type="text" required/>
-        <div *ngIf="error">
-          <div *ngIf="form.controls['cpf'].errors?.['required']" class="error-message">
-            Campo obrigatório
-          </div>
-          <div *ngIf="form.controls['cpf'].errors?.['minlength']" class="error-message">
-            O CPF deve ter 11 dígitos
-          </div>
+        <input
+          formControlName="cpf"
+          mask="000.000.000-00"
+          type="text"
+          required
+        />
+        <div *ngIf="error" class="error-message">
+          {{ error_message }}
         </div>
       </div>
       <div class="d-flex align-items-end mx-3">
-        <button class="btn-primary" type="submit">Consultar por CPF</button>
+        <button
+          class="btn-primary"
+          [ngClass]="validateDisableButton() ? 'disabled' : ''"
+          type="submit"
+          [disabled]="validateDisableButton()"
+        >
+          Consultar por CPF
+        </button>
       </div>
     </form>
     <div *ngIf="found_user" class="d-flex gap-2">
-      <app-card [title]="'Situação cadastral do CPF'" [subtitle]="'Consulta na Receita Federal'">
+      <app-card
+        [title]="'Situação cadastral do CPF'"
+        [subtitle]="'Consulta na Receita Federal'"
+      >
         <div class="d-flex flex-column align-between gap-1">
           <div class="d-flex">
             <div class="d-flex-center">
@@ -35,19 +45,23 @@
             </div>
             <div class="text-with-label">
               <label>Nome</label>
-              <p>{{user.nome}}</p>
+              <p>{{ user.nome }}</p>
             </div>
           </div>
           <div class="d-flex">
             <div class="d-flex-center">
-              <mat-icon *ngIf="user.situacao else not_regular" class="mx-2 text-green">check</mat-icon>
+              <mat-icon
+                *ngIf="user.situacao; else not_regular"
+                class="mx-2 text-green"
+                >check</mat-icon
+              >
               <ng-template #not_regular>
                 <mat-icon class="mx-2 text-red">cancel</mat-icon>
               </ng-template>
             </div>
             <div class="text-with-label">
               <label>Situação do CPF</label>
-              <p>{{user.situacao ? 'Regular' : 'Irregular'}}</p>
+              <p>{{ user.situacao ? "Regular" : "Irregular" }}</p>
             </div>
           </div>
         </div>
@@ -60,7 +74,7 @@
             </div>
             <div class="text-with-label">
               <label>Número da conta</label>
-              <p>{{user.conta_aplicacao_num}}</p>
+              <p>{{ user.conta_aplicacao_num }}</p>
             </div>
           </div>
           <a class="link mx-2">Duplicar conta</a>
@@ -74,7 +88,7 @@
             </div>
             <div class="text-with-label">
               <label>Número da conta</label>
-              <p>{{user.conta_corrente_num}}</p>
+              <p>{{ user.conta_corrente_num }}</p>
             </div>
           </div>
           <a class="link mx-2">Duplicar conta</a>
@@ -83,3 +97,8 @@
     </div>
   </div>
 </div>
+<app-footer>
+  <button *ngIf="found_user" class="btn-primary">Iniciar nova admissão</button>
+  <button class="btn-secondary">Dicas para admissão</button>
+</app-footer>
+

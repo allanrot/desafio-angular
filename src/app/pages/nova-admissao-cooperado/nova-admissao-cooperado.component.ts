@@ -13,15 +13,21 @@ import { Step } from 'src/app/shared/models/step.model';
 })
 export class NovaAdmissaoCooperadoComponent implements OnInit {
   form!: FormGroup;
-  error: boolean = false;
   user: User = {} as User;
   found_user: boolean = false;
   steps: Array<Step> = [
-    {order: 1, name: 'Início', active: true},
-    {order: 2, name: 'Documentos', active: false},
-    {order: 3, name: 'Dados cadastrais', active: false},
-    {order: 4, name: 'Admissão', active: false},
-  ]
+    { order: 1, name: 'Início', active: true },
+    { order: 2, name: 'Documentos', active: false },
+    { order: 3, name: 'Dados cadastrais', active: false },
+    { order: 4, name: 'Admissão', active: false },
+  ];
+  error: boolean = false;
+  error_messages: Record<string, string> = {
+    cpf_not_found: 'CPF não encontrado',
+    cpf_invalid: 'Insira um CPF válido',
+  };
+  error_message: string = '';
+  found_cpf: string = '';
 
   constructor(private form_builder: FormBuilder, private service: ApiService) {}
 
@@ -33,18 +39,26 @@ export class NovaAdmissaoCooperadoComponent implements OnInit {
 
   onSubmit() {
     if (this.form.invalid) {
-      this.error = true;
+      this.getErrorMessage('cpf_invalid');
       this.found_user = false;
       return;
     }
     this.error = false;
     const param = mask.cpf(this.form.value.cpf);
-    this.service.httpGetUserByCpf(param).subscribe({
+
+    this.getUserByCpf(param);
+  }
+
+  getUserByCpf(cpf: string) {
+    this.service.httpGetUserByCpf(cpf).subscribe({
       next: (response: User[]) => {
+        if (!response.length) return this.getErrorMessage('cpf_not_found');
         this.validateUser(response[0]);
         this.user = response[0];
+        this.found_cpf = cpf;
       },
       error: () => {
+        this.getErrorMessage('cpf_not_found');
         this.found_user = false;
       },
     });
@@ -56,5 +70,18 @@ export class NovaAdmissaoCooperadoComponent implements OnInit {
       return;
     }
     this.found_user = true;
+  }
+
+  getErrorMessage(status: string) {
+    this.error = true;
+    this.error_message = this.error_messages[status];
+  }
+
+  validateDisableButton(): boolean {
+    return (
+      this.found_user &&
+      this.form.valid &&
+      this.found_cpf === mask.cpf(this.form.value.cpf)
+    );
   }
 }
