@@ -2,7 +2,15 @@
 
 [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
 
-## Passo a passo
+## Passo a passo opção com vercel
+
+Run `npm i` for install dependencies.
+
+Run `cd database` and `npx json-server --watch db.json`.
+
+Open [Vercel](https://desafio-angular-tau.vercel.app)
+
+## Passo a passo opção local
 
 Run `npm i` for install dependencies.
 
