@@ -4,7 +4,10 @@
 
 ## Passo a passo
 
-Run `npm i` for install dependencies.__
-Run `cd database` and `npx json-server --watch db.json`.__
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.__
+Run `npm i` for install dependencies.
+
+Run `cd database` and `npx json-server --watch db.json`.
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
