@@ -2,7 +2,7 @@
 
 [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
 
-## Passo a passo opção com vercel
+## Initializing with vercel
 
 Run `npm i` for install dependencies.
 
@@ -10,7 +10,7 @@ Run `cd database` and `npx json-server --watch db.json`.
 
 Open [Vercel](https://desafio-angular-tau.vercel.app)
 
-## Passo a passo opção local
+## Local initializing
 
 Run `npm i` for install dependencies.
 
@@ -20,7 +20,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-CPFs disponíveis: [
+Available CPF's: [
     "082.330.949-51",
     "291.940.230-77",
     "561.675.971-62",
@@ -34,4 +34,5 @@ CPFs disponíveis: [
     "031.202.710-98"
 ]
 
+## Test coverage
 ![image](https://github.com/allanrot/desafio-angular/assets/42452179/64ff04fb-08fd-4457-8c81-2025fbcb75aa)
