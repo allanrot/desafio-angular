@@ -9,7 +9,7 @@ import { ComponentsModule } from '../../shared/components/components.module';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskModule } from 'ngx-mask';
-import { LayoutModule } from 'src/app/layout/layout.module';
+import { LayoutModule } from 'src/app/shared/layout/layout.module';
 
 @NgModule({
   declarations: [NovaAdmissaoCooperadoComponent],
