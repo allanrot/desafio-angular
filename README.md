@@ -33,3 +33,5 @@ CPFs disponíveis: [
     "102.456.950-01",
     "031.202.710-98"
 ]
+
+![image](https://github.com/allanrot/desafio-angular/assets/42452179/64ff04fb-08fd-4457-8c81-2025fbcb75aa)
