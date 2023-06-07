@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.cdnfonts.com/css/exo-4');
+@import url('https://fonts.cdnfonts.com/css/exo-2');
 @import url("https://fonts.cdnfonts.com/css/open-sans");
 @import "src/assets/scss/variables.scss";
 
@@ -10,11 +10,11 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: 'Exo', sans-serif;
+  font-family: 'Exo 2', sans-serif;
 }
 
 button {
-  font-family: 'Exo', sans-serif;
+  font-family: 'Exo 2', sans-serif;
   font-weight: 600;
   font-size: 1rem;
 }
