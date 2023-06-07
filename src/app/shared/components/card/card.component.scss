@@ -1,0 +1,16 @@
+@import "src/assets/scss/variables.scss";
+
+.card {
+  background-color: $white;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  width: fit-content;
+  min-width: 250px;
+  height: fit-content;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1em;
+}

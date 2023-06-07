@@ -1,0 +1,85 @@
+<div class="container">
+  <app-steps [steps]="steps"></app-steps>
+  <div class="d-flex flex-column gap-2 align-between">
+    <div class="info">
+      <h2>Informe o CPF do futuro cooperado (a)</h2>
+      <p>
+        Se necessário, você precisará duplicar uma conta existente ou pausar e
+        retomar este cadastro futuramente.
+      </p>
+      <p>Digite apenas os números (sem pontos ou traços).</p>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="d-flex">
+      <div class="form-group">
+        <label for="cpf" class="font-bold">CPF</label>
+        <input formControlName="cpf" mask="000.000.000-00" type="text" required/>
+        <div *ngIf="error">
+          <div *ngIf="form.controls['cpf'].errors?.['required']" class="error-message">
+            Campo obrigatório
+          </div>
+          <div *ngIf="form.controls['cpf'].errors?.['minlength']" class="error-message">
+            O CPF deve ter 11 dígitos
+          </div>
+        </div>
+      </div>
+      <div class="d-flex align-items-end mx-3">
+        <button class="btn-primary" type="submit">Consultar por CPF</button>
+      </div>
+    </form>
+    <div *ngIf="found_user" class="d-flex gap-2">
+      <app-card [title]="'Situação cadastral do CPF'" [subtitle]="'Consulta na Receita Federal'">
+        <div class="d-flex flex-column align-between gap-1">
+          <div class="d-flex">
+            <div class="d-flex-center">
+              <mat-icon class="mx-2">person</mat-icon>
+            </div>
+            <div class="text-with-label">
+              <label>Nome</label>
+              <p>{{user.nome}}</p>
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="d-flex-center">
+              <mat-icon *ngIf="user.situacao else not_regular" class="mx-2 text-green">check</mat-icon>
+              <ng-template #not_regular>
+                <mat-icon class="mx-2 text-red">cancel</mat-icon>
+              </ng-template>
+            </div>
+            <div class="text-with-label">
+              <label>Situação do CPF</label>
+              <p>{{user.situacao ? 'Regular' : 'Irregular'}}</p>
+            </div>
+          </div>
+        </div>
+      </app-card>
+      <app-card [title]="'Conta aplicação'" [subtitle]="user.conta_nome">
+        <div class="d-flex flex-column align-between gap-1">
+          <div class="d-flex">
+            <div class="d-flex-center">
+              <mat-icon class="mx-2">account_balance_wallet</mat-icon>
+            </div>
+            <div class="text-with-label">
+              <label>Número da conta</label>
+              <p>{{user.conta_aplicacao_num}}</p>
+            </div>
+          </div>
+          <a class="link mx-2">Duplicar conta</a>
+        </div>
+      </app-card>
+      <app-card [title]="'Conta corrente'" [subtitle]="user.conta_nome">
+        <div class="d-flex flex-column align-between gap-1">
+          <div class="d-flex">
+            <div class="d-flex-center">
+              <mat-icon class="mx-2">account_balance_wallet</mat-icon>
+            </div>
+            <div class="text-with-label">
+              <label>Número da conta</label>
+              <p>{{user.conta_corrente_num}}</p>
+            </div>
+          </div>
+          <a class="link mx-2">Duplicar conta</a>
+        </div>
+      </app-card>
+    </div>
+  </div>
+</div>

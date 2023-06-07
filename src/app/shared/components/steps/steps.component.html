@@ -1,0 +1,11 @@
+<div class="steps">
+  <div
+    *ngFor="let step of steps"
+    class="step"
+    [ngClass]="step.active ? 'active' : ''"
+  >
+    <div class="step-item"></div>
+    <div *ngIf="step.order != steps.length" class="step-line"></div>
+    <p>{{ step.name }}</p>
+  </div>
+</div>

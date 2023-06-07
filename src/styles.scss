@@ -1,1 +1,215 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.cdnfonts.com/css/exo-4');
+@import url("https://fonts.cdnfonts.com/css/open-sans");
+@import "src/assets/scss/variables.scss";
+
+body {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  background-color: $background-color;
+}
+
+h1, h2, h3 {
+  font-family: 'Exo', sans-serif;
+}
+
+button {
+  font-family: 'Exo', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+input {
+  width: 15em;
+  height: 32px;
+}
+
+.content {
+  padding: 0 0 0 7em;
+}
+
+.container {
+  margin: 2em;
+}
+
+.btn-primary {
+  background-color: $primary-color;
+  color: $white;
+  border: none;
+  padding: .5em 1em;
+  cursor: pointer;
+  height: 38px;
+}
+
+.btn-primary:hover {
+  background-color: darken($primary-color, 10%);
+}
+
+.btn-secondary {
+  background-color: $white;
+  color: $primary-color;
+  border: 1px solid $primary-color;
+  padding: .5em 1em;
+  cursor: pointer;
+  height: 38px;
+}
+
+.btn-secondary:hover {
+  background-color: darken($white, 10%);
+}
+
+.link {
+  text-decoration: none;
+  cursor: pointer;
+  color: $primary-color;
+  font-weight: 600;
+}
+
+// Display flex
+.d-flex {
+  display: flex;
+}
+
+.d-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.align-items-end {
+  align-items: end;
+}
+
+.align-between {
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.gap-1 {
+  gap: 1em;
+}
+
+.gap-2 {
+  gap: 2em;
+}
+
+.gap-3 {
+  gap: 3em;
+}
+
+// Margins
+.m-0 {
+  margin: 0;
+}
+
+.m-1 {
+  margin: .1em;
+}
+
+.mx-1 {
+  margin-left: .1em;
+  margin-right: .1em;
+}
+
+.my-1 {
+  margin-top: .1em;
+  margin-bottom: .1em;
+}
+
+.m-2 {
+  margin: .5em;
+}
+
+.mx-2 {
+  margin-left: .5em;
+  margin-right: .5em;
+}
+
+.my-2 {
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+.m-3 {
+  margin: 1em;
+}
+
+.mx-3 {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.my-3 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+// Text
+.upper-case {
+  text-transform: uppercase;
+}
+
+.primary-color {
+  color: $primary-color;
+}
+
+.text-green {
+  color: $green;
+}
+
+.text-red {
+  color: $red;
+}
+
+.font-bold {
+  font-weight: 600;
+}
+
+// Forms
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.error-message {
+  position: absolute;
+  bottom: -1.5em;
+  color: $red;
+  font-size: .8rem;
+  margin: 0;
+}
+
+.text-with-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-with-label label {
+  margin: 0;
+  font-size: .8rem;
+  color: $gray;
+}
+
+.text-with-label p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.bigger-icon {
+  scale: 1.5;
+}
