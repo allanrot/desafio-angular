@@ -4,7 +4,6 @@ import { of, throwError } from 'rxjs';
 import { NovaAdmissaoCooperadoComponent } from './nova-admissao-cooperado.component';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { mask } from '../../shared/utils/mask';
-import { validate } from './../../shared/utils/validate';
 import { User } from 'src/app/shared/models/user.model';
 
 describe('NovaAdmissaoCooperadoComponent', () => {
